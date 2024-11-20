@@ -1,14 +1,12 @@
 #include <stdio.h>
 #include <math.h>
 
-// Глобальные переменные
 char nazev_ukolu[255];
 int uvod = 1;
 const double s0 = 0.0;
 double v0, v1, t0, t, a, s, v, pomer;
 int typPohybu;
 
-// Функция note
 void note() {
     if (uvod == 1) {
         uvod = 0;
@@ -16,14 +14,11 @@ void note() {
         printf("jmeno: Darius Xerxes\n");
         printf("login: dxerxes\n");
         printf("datum plneni ukolu: 26.11.2021\n\n");
-
-        // Форматирование строки через sprintf для C
         sprintf(nazev_ukolu, "nazev ukolu: ZSP - Domaci ukol c. 2 - \"Kinematika\"\n\n");
         printf("%s", nazev_ukolu);
     }
 }
 
-// Функция intro
 int intro(float v0_p, float v1_p, float t0_p, float t_p) {
     v0 = v0_p;
     v1 = v1_p;
@@ -54,7 +49,6 @@ int intro(float v0_p, float v1_p, float t0_p, float t_p) {
     return 0;
 }
 
-// Функция kinematika_vypocet
 void kinematika_vypocet() {
     a = (v1 - v0) / t0;
     v = v0 + a * t;
@@ -62,14 +56,13 @@ void kinematika_vypocet() {
     pomer = v1 / v0;
 
     if (a > 0)
-        typPohybu = 3; // Равномерно ускоренное движение
+        typPohybu = 3;
     else if (a < 0)
-        typPohybu = 1; // Равномерно замедленное движение
+        typPohybu = 1;
     else
-        typPohybu = 2; // Постоянное движение
+        typPohybu = 2;
 }
 
-// Функция kinematika_vypisPohybu
 void kinematika_vypisPohybu() {
     if (typPohybu == 1)
         printf("Pohyb je rovnomerne zpomaleny.\n");
@@ -79,7 +72,6 @@ void kinematika_vypisPohybu() {
         printf("Pohyb je rovnomerne zrychleny.\n");
 }
 
-// Функция kinematika_vypisTabulky
 void kinematika_vypisTabulky() {
     printf("\nTabulka vysledku\n");
     printf("v0: %.2f km/h\n", v0);
@@ -92,7 +84,6 @@ void kinematika_vypisTabulky() {
     printf("pomer v: %.2f%%\n", pomer * 100);
 }
 
-// Функция kinematika
 int kinematika() {
     note();
     kinematika_vypocet();
@@ -101,7 +92,6 @@ int kinematika() {
     return 0;
 }
 
-// Главная функция main
 int main() {
     int result = intro(85.0, 125.0, 0.5, 2.5);
 
